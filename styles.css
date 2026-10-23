@@ -121,6 +121,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  margin-right: 32px;
   gap: 10rem;
   flex: 1;
 }
@@ -231,57 +232,72 @@ nav {
 }
 
 .online__store {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 350px);
+  align-items: center;
+  gap: clamp(1rem, 4vw, 3rem);
   margin-top: 100px;
 }
+
 .feature {
-  width: min(100%, px);
-  margin: 0 auto;
+  min-width: 0;
+  width: 100%;
+  margin: 0;
 }
 
-.feature img {
+.hand__illustration {
   display: block;
-  width: 80%;
-  height: auto; 
+  width: 100%;
+  max-width: 800px;
+  height: auto;
 }
 
-.draw__line path {
-  fill: none;
-  stroke: #ae4291;
-  stroke-width: 4;
-  stroke-linecap: round;
-  stroke-dasharray: 400;
-  stroke-dashoffset: 400;
-  transition: stroke-dashoffset 1.2s ease;
-  animation: draw 1.5s ease forwards;
+.hand__illustration path {
+  stroke: #000;
+  stroke-width: 8;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  fill-opacity: 0;
+  animation:
+    hand-draw 2.5s ease forwards,
+    hand-fill 0.5s ease 2.5s forwards;
 }
 
-@keyframes draw {
-  from {
-    stroke-dasharray: 400;
-    stroke-dashoffset: 400;
-  }
+@keyframes hand-draw {
   to {
-    stroke-dasharray: 400;
     stroke-dashoffset: 0;
   }
 }
 
-.draw__line:hover path {
-  stroke-dashoffset: 0;
+@keyframes hand-fill {
+  to {
+    fill-opacity: 1;
+  }
 }
 
 .store__links img {
-  display: flex;
-  flex-direction: column;
-  margin: 40px;
+  display: block;
+  margin: 0;
   width: min(100%, 250px);
   border-radius: 15px;
   background-color: #fff;
   box-shadow: 5px rgba(0, 0, 0, 0.25);
 
+}
 
+.store__links {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media (max-width: 700px) {
+  .online__store {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .store__links img:hover  {
@@ -290,4 +306,29 @@ nav {
   transform-origin: center bottom;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
+@media (max-width: 900px) {
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
 
+  .nav__row {
+    width: 100%;
+  }
+
+  .nav__logo {
+    justify-content: center;
+  }
+
+  .nav__links {
+    width: 100%;
+    flex: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+  }
+
+  .nav__link {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+}
