@@ -22,8 +22,9 @@
   font-style: italic;
 }
 
-.gistesy {
-  font-family: "gistesy", sans-serif;
+@font-face {
+  font-family: "Gistesy";
+  src: url("/fonts/gistesy.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
@@ -50,7 +51,19 @@ h1 {
   margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
-  font-family: "cantarell", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+  font-family:
+    "cantarell",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
 }
 
 body {
@@ -78,7 +91,7 @@ main {
 
 nav {
   padding-top: 15px;
-  diplay: flex;
+  display: flex;
   margin-bottom: 32px;
   max-width: 1280px;
   position: relative;
@@ -98,10 +111,112 @@ nav {
 
 .nav__logo--img {
   width: 15em;
-  z-index: 1;
 }
 
-.nav__logo--title {
-  font-family: "gistesy", san-serif;
+.nav__links {
+  display: flex;
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10rem;
+  flex: 1;
+  padding-bottom: 2px;
+}
+
+.nav__link--text {
+  background: transparent;
+  transition: transform 0.2s ease, text-shadow 0.2s ease, color 0.2s ease;
+  font-family: "gistesy", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2.5rem;
+  color: #ae4291; 
+
+}
+
+.nav__link {
+  font-weight: 400;
+  padding-top: 4px;
+  letter-spacing: 0.35px;
+  border-bottom: 2px solid transparent;
+  position: relative;
+  text-decoration: none;
+  transition: all 300ms;
+  margin-right: 0;
+  white-space: nowrap;
+  font-family: "gistesy", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2.5rem;
+  color: #ae4291; 
+}
+
+.nav__link:hover .nav__link--text {
+  transform: translateY(-2px) scale(1.04);
+  text-shadow:
+    0 0 8px rgba(255, 102, 0, 0.5),
+    0 4px 12px rgba(0, 0, 0, 0.25);
+  text-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn__menu {
+  display: none;
+  background: transparent;
+  border: none;
+  transition: all 300ms ease;
+}
+
+.btn__menu--svg:hover {
+  filter: invert(26%) sepia(94%) saturate(7476%) hue-rotate(261deg)
+    brightness(94%) contrast(115%); }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 378px;
+  margin: 24px 16px;
+  padding: 32px;
+  background-color: #fff;
+  border: 1px solid rgb(229, 231, 235);
+  border-radius: 8px;
+  z-index: 4;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(300%);
+  transition: all 300ms ease;
+}
+
+.modal__links {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.modal__link {
+  color: #1a202c;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 8px 0;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  margin: 0;
+  white-space: nowrap;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+}
+
+.header__phone {
   
 }
+
