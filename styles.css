@@ -48,7 +48,7 @@ h1 {
 }
 
 * {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
   font-family:
@@ -64,11 +64,6 @@ h1 {
     "Open Sans",
     "Helvetica Neue",
     sans-serif;
-}
-
-.page-shell {
-  width: min(1280px, calc(100% - 32px));
-  margin: 0 auto;
 }
 
 body {
@@ -164,7 +159,7 @@ nav {
   color: #ff5353;
   transform: translateY(-2px) scale(1.04);
   text-shadow:
-    0 0 8px rgba(255, 102, 0, 0.5),
+    0 0 8px rgba(247, 125, 125, 0.5),
     0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
@@ -220,12 +215,79 @@ nav {
 
 .header__contact {
   display: flex;
-  flex-direction: row;
-  align-items: center; 
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.header__contact p, .header__phone {
+  margin: 0;
 }
 
 .header__phone {
+  color: inherit;
   text-decoration: none;
+  font-size: 1.125rem;
 }
 
+.online__store {
+  display: flex;
+  flex-direction: row;
+  margin-top: 100px;
+}
+.feature {
+  width: min(100%, px);
+  margin: 0 auto;
+}
+
+.feature img {
+  display: block;
+  width: 80%;
+  height: auto; 
+}
+
+.draw__line path {
+  fill: none;
+  stroke: #ae4291;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  transition: stroke-dashoffset 1.2s ease;
+  animation: draw 1.5s ease forwards;
+}
+
+@keyframes draw {
+  from {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+  }
+  to {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 0;
+  }
+}
+
+.draw__line:hover path {
+  stroke-dashoffset: 0;
+}
+
+.store__links img {
+  display: flex;
+  flex-direction: column;
+  margin: 40px;
+  width: min(100%, 250px);
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 5px rgba(0, 0, 0, 0.25);
+
+
+}
+
+.store__links img:hover  {
+  transition: transform 0.2s ease, text-shadow 0.2s ease, color 0.2s ease;
+  transform: translateY(-2px) scale(1.04);
+  transform-origin: center bottom;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
 
