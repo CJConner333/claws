@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -38,51 +38,55 @@
         </div>
 
         <div class="nav__links">
-          <a href="#manicure" class="nav__link"><span class="nav__link--text">Manicure Products</span></a>
-          <a href="#pedicure" class="nav__link"><span class="nav__link--text">Pedicure Products</span></a>
-          <a href="#support" class="nav__link"><span class="nav__link--text">Customer Support</span></a>
-        </div>
-
-        <button class="btn__menu" onclick="openMenu()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"    fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="btn__menu--svg">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          </button>
+          <a href="https://claws-nail-supply-2.myshopify.com/collections/manicure-products" class="nav__link" target="new"><span class="nav__link--text">Manicure Products</span></a>
+          <a href="https://claws-nail-supply-2.myshopify.com/collections/pedicure-products" class="nav__link" target="new"><span class="nav__link--text">Pedicure Products</span></a>
+          <a href="#modal" id="support__link" class="nav__link" data-open="modal" aria-haspopup="dialog" aria-controls="modal" aria-expanded="false"><span class="nav__link--text">Customer Support</span></a>
         </div>
       </nav>
-        <div class="modal">
-              <button class="btn__menu btn__menu--close" onclick="closeMenu()">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                      class="light___StyledCloseIcon-lj69nl-14 fASujC">
-                      <line x1="18" y1="6" x2="6" y2="18"></line>
-                      <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-              </button>
-              <div class="modal__links">
-                  <a class="modal__link">Manicure Products</a>
-                  <a class="modal__link">Pedicure Products</a>
-                  <a class="modal__link">Contact Support</a>
-                  <a class="modal__link"> href="tel:+1-620-556-2457">620-556-2457</a>
-              </div>
-          </div>
 
           <header>
               <div class="container">
                 <div class="row">
                   <div class="header__contact">
-                    <p>NEW SITE UNDER CONSTRUCTION -- CALL TO PLACE AN ORDER</p>
+                    
                     <p>114 Gunsmoke St, Dodge City KS 67801</p>
-                    <a class="header__phone" href="tel:+1-620-556-2457">620-556-2457</a>
+                    <a class="header__phone" href="tel:+1-620-556-2457">620-556-2457 &emsp;     620=55NAILS</a>
                   </div>
                 </div>
               </div>
             </header>
     </section>
+
+    <!-- Modal -->
+<div class="modal" id="modal" role="dialog" aria-modal="true"
+     aria-hidden="true" aria-labelledby="modal-title">
+  <div class="modal__overlay" data-close></div>
+
+  <div class="modal__dialog" role="document" tabindex="-1">
+    <header class="modal__header">
+      <h2 id="modal-title">Send us a message</h2>
+      <button class="modal__close" aria-label="Close" data-close>&times;</button>
+    </header>
+
+    <form id="modalForm" class="modal__form" action="/contact.php" method="post" novalidate>
+      <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden">
+        <label for="company">Leave this field empty</label>
+        <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <label for="name">Name:</label><input id="name" name="name" type="text" required>
+      <label for="email">Email:</label><input id="email" name="email" type="email" required>
+      <label for="subject">Subject</label><input id="subject" name="subject" type="text" required>
+      <label for="request">How Can We Help?</label><textarea id="request" name="message" rows="6" required></textarea>
+
+      <div class="modal__actions">
+        <button type="button" class="btn btn--ghost" data-close>Cancel</button>
+        <button type="submit" class="btn">Send</button>
+      </div>
+
+      <div id="formFeedback" class="form-feedback" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
 
     <main>
       <div class="container">
@@ -115,10 +119,10 @@
                 </svg>
               </div> 
               <div class="store__links">
-                <a href="#mani" class="photo__button">
+                <a href="https://claws-nail-supply-2.myshopify.com/collections/manicure-products" class="photo__button" target="new">
                 <img src="/assets/manicure.png" alt="Manicure Products">
                 </a>
-                <a href="#pedi" class="photo__button">
+                <a href="https://claws-nail-supply-2.myshopify.com/collections/pedicure-products" class="photo__button" target="new">
                 <img src="/assets/pedicure.png" alt="Manicure Products">
                 </a>
               </div>
@@ -126,5 +130,6 @@
           </div>
         </main>
   </div>
+  <script src="script.js" defer></script>
 </body>
 </html>

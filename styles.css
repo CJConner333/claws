@@ -167,61 +167,131 @@ nav {
     0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-.btn__menu {
-  display: none;
-  background: transparent;
+/* Modal */
+
+:root{
+  --overlay-bg: rgba(0,0,0,0.5);
+  --modal-width: 520px;
+  --radius: 10px;
+  --gap: 1rem;
+  --accent: #1466f2;
+  --bg: #fff;
+}
+
+* { box-sizing: border-box; }
+body.no-scroll { overflow: hidden; }
+
+.btn {
+  background: var(--accent);
+  color: #fff;
   border: none;
-  transition: all 300ms ease;
+  padding: .5rem 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font: inherit;
 }
+.btn--ghost { background: transparent; color: inherit; border: 1px solid #ccc; }
 
-.btn__menu--svg:hover {
-  filter: invert(26%) sepia(94%) saturate(7476%) hue-rotate(261deg)
-    brightness(94%) contrast(115%);
-}
-
+/* Modal base (hidden by default using aria-hidden) */
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 378px;
-  margin: 24px 16px;
-  padding: 32px;
-  background-color: #fff;
-  border: 1px solid rgb(229, 231, 235);
-  border-radius: 8px;
-  z-index: 4;
-  visibility: hidden;
-  opacity: 0;
-  transform: translateX(300%);
-  transition: all 300ms ease;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
 }
 
-.modal__links {
-  width: 100%;
-  height: 100%;
+/* shown state controlled by JS (adds .is-open) */
+.modal.is-open { display: flex; }
+
+/* Overlay */
+.modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--overlay-bg);
+  backdrop-filter: blur(2px);
+}
+
+/* Dialog */
+.modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(calc(var(--modal-width)), 95%);
+  background: var(--bg);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  padding: 1rem;
+  max-height: 90vh;
+  overflow: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: var(--gap);
 }
 
-.modal__link {
-  color: #1a202c;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.5;
-  margin: 8px 0;
-  padding-bottom: 4px;
-  border-bottom: 2px solid transparent;
+/* Modal Header */
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
   margin: 0;
-  white-space: nowrap;
+}
+
+.modal__header h2 {
+  width: 100%;
+  text-align: center;
+}
+
+.modal__header > * {
+  margin: 0;
+}
+
+.modal__close {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Form */
+.modal__form { display: grid; gap: .75rem; }
+.form-row { display: flex; flex-direction: column; gap: .35rem; }
+label { font-size: .9rem; }
+input, textarea {
+  padding: .5rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  font: inherit;
+}
+.modal__actions {
+  display:flex;
+  gap:.5rem;
+  justify-content: flex-end;
+  margin-top: .25rem;
+}
+
+/* feedback */
+.form-feedback { margin-top: .5rem; font-size: .95rem; color: green; }
+
+/* Small responsive tweak */
+@media (max-width: 420px) {
+  .modal__dialog { padding: .75rem; }
 }
 
 .header__contact {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5rem;
+  margin: 0 auto;
 }
 
 .header__contact p,
@@ -236,11 +306,13 @@ nav {
 }
 
 .online__store {
+  width: min(100%, 798px);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 350px);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
   align-items: center;
+  justify-items: center;
   gap: clamp(1rem, 4vw, 3rem);
-  margin-top: 100px;
+  margin: 100px auto 0;
 }
 
 .feature {
@@ -252,7 +324,7 @@ nav {
 .hand__illustration {
   display: block;
   width: 100%;
-  max-width: 650px;
+  max-width: 500px;
   height: auto;
 }
 
@@ -348,13 +420,13 @@ nav {
     flex: none;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    gap: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
     margin: 0;
   }
 
   .nav__link {
-    font-size: clamp(1.35rem, 5.5vw, 1.8rem);
+    font-size: clamp(1rem, 4vw, 1.3rem);
     margin-left: 0;
     text-align: center;
   }
@@ -540,7 +612,7 @@ nav {
   }
 
   .online__store {
-    grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
     gap: 1.5rem;
     margin-top: 4rem;
   }
